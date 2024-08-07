@@ -24,9 +24,9 @@ var shell Shell
 func initializeShell() {
 	if shell.Name == "" {
 		shell = Shell{
-			Name:    "zsh",
-			Path:    "/usr/bin/zsh",
-			Command: "zsh",
+			Name:    "sh",
+			Path:    "/usr/bin/sh",
+			Command: "sh",
 		}
 	}
 }
