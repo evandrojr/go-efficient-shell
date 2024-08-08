@@ -19,27 +19,14 @@ type Shell struct {
 	Command string
 }
 
-var shell Shell
-
-func initializeShell() {
-	if shell.Name == "" {
-		shell = Shell{
-			Name:    "sh",
-			Path:    "/usr/bin/sh",
-			Command: "sh",
-		}
-	}
-}
-
 func PrintOutcome(outcome Outcome) {
 	fmt.Printf("stdout:\n%s\nstderr:\n%s\nexit-code: %d\n", outcome.Stdout, outcome.Stderr, outcome.ExitCode)
 }
 
-func ShellExec(command string, showOutcome bool) Outcome {
-	initializeShell()
+func Exec(command string, showOutcome bool) Outcome {
 	cmd := execute.ExecTask{
-		Command:     shell.Command,
-		Args:        []string{"-c", command},
+		Command:     command,
+		Shell:       true,
 		StreamStdio: false,
 	}
 
